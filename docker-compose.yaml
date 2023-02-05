@@ -1,0 +1,15 @@
+version: '3.0'
+
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Novokuznetsk
+    volumes:
+      - /$XDG_RUNTIME_DIR/docker.sock:/var/run/docker.sock
+      - ./volumes/:/var/lib/docker/volumes/
+    ports:
+      - 10102:9000
+      - 8000:8000
